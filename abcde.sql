@@ -93,4 +93,13 @@ DELETE FROM Products
 WHERE ProductID = 78
 
 
+SELECT emp.EmployeeID,
+       emp.FirstName AS [ชื่อพนักงาน],
+       boss.EmployeeID AS [รหัสหัวหน้า],
+       boss.FirstName AS [ชื่อหัวหน้า]
+FROM Employees emp
+LEFT JOIN Employees boss
+       ON emp.ReportsTo = boss.EmployeeID;
+
+
 
