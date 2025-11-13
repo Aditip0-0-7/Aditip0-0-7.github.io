@@ -2,65 +2,631 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>แนะนำตัวเอง</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | นักศึกษา</title>
     <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #f0f8ff;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
         .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 40px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-top: 50px;
-            border-radius: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        h1 {
-            color: #2e86c1;
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            text-align: center;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.8;
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
-        .profile-img {
+        
+        .profile-image {
+            flex-shrink: 0;
+        }
+        
+        .profile-image img {
             width: 150px;
+            height: 150px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .social a {
-            margin-right: 15px;
+        
+        .profile-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #764ba2;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .intro-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .intro-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .intro-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill-category h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .skill-category li {
+            padding: 0.3rem 0;
+            color: #555;
+        }
+        
+        .skill-category li:before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .project-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #764ba2;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-links {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .project-links h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .achievements {
+            margin-top: 1rem;
+        }
+        
+        .achievement-item {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #e17055;
+        }
+        
+        .achievement-item h3 {
+            color: #d63031;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .contact-item a {
+            color: inherit;
             text-decoration: none;
-            color: #2980b9;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .intro-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <center>
-            <img src="DCWG1asXgAAIBTv.jpg" alt="รูปโปรไฟล์" class="profile-img">
-            <h1>สวัสดีครับ ผมชื่อ Aditip</h1>
-        </center>
-        <p>
-            ผมเป็นคนที่สนใจด้านเทคโนโลยี เว็บไซต์ และปัญญาประดิษฐ์<br>
-            ปัจจุบันกำลังศึกษาการพัฒนาเว็บไซต์ด้วย HTML, CSS และ JavaScript<br>
-            เป้าหมายของผมคือการเป็นนักพัฒนาเว็บมืออาชีพ และสร้างผลงานที่มีคุณภาพ
-        </p>
-        <h2>ทักษะที่มี</h2>
-        <ul>
-            <li>HTML/CSS พื้นฐาน</li>
-            <li>JavaScript เบื้องต้น</li>
-            <li>การออกแบบ UI/UX</li>
-        </ul>
-        <h2>ติดต่อผมได้ที่</h2>
-        <div class="social">
-            <a href="mailto:your.email@example.com">อีเมล</a>
-            <a href="https://www.facebook.com/yomsriken.aditip/?locale=th_TH">Facebook</a>
-            <a href="https://github.com/Aditip0-0-7/Aditip0-0-7.github.io" target="_blank">GitHub</a>
+        <header>
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="imggg/104293.jpg" alt="Profile Picture">
+                </div>
+                <div class="profile-info">
+                    <h1>🎓 Portfolio นักศึกษา</h1>
+                    <p class="tagline">มหาวิทยาลัยราชภัฏอุดรธานี • คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>📋 ส่วนแนะนำตัว (Introduction / Usage)</h2>
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <h3>👤 ชื่อ-นามสกุล</h3>
+                    <p>(อดิทีปย์ ยมศรีเคน 67040233118)</p>
+                </div>
+                <div class="intro-card">
+                    <h3>💼 กระเป๋า</h3>
+                    <p>กระเป๋าสีดำ</p>
+                </div>
+                <div class="intro-card">
+                    <h3>📚 คณะ / มหาวิทยาลัย</h3>
+                    <p>คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ </p>
+                </div>
+                <div class="intro-card">
+                    <h3>🎯 ปีการศึกษา</h3>
+                    <p> ("นักศึกษาปี 2")</p>
+                </div>
+                <div class="intro-card">
+                    <h3>💡 ความสนใจ</h3>
+                    <p>เช่น AI, Web Dev, Cybersecurity, Data Science</p>
+                </div>
+            </div>
         </div>
+
+        <div class="section">
+            <h2>🛠️ ทักษะ (Skills)</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>🤖 AI & Data</h3>
+                    <ul>
+                        <li>TensorFlow</li>
+                        <li>scikit-learn</li>
+                        <li>Power BI</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>🔧 Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>VS Code</li>
+                        <li>Figma</li>
+                        <li>Google Colab</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>💬 Soft Skills</h3>
+                    <ul>
+                        <li>การสื่อสาร</li>
+                        <li>การทำงานเป็นทีม</li>
+                        <li>การแก้ปัญหา</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 ผลงานที่ผ่านมา (Projects / Portfolio)</h2>
+            <p><strong>จุดประสงค์:</strong> แสดงสิ่งที่เคยทำจริง ทั้งในรายวิชาและนอกห้องเรียน</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>🌐 เว็บไซต์ที่เคยพัฒนา</h3>
+                    <p>ระบบจองห้องประชุมออนไลน์ (Web Project)</p>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/Screenshot (957).png" 
+                             alt="Project Screenshot" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🤖 เว็บคำชะโนด</h3>
+                    <p>(Data Project)</p>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/Screenshot (657).png"
+                             alt="AI Project" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>📊  วิเคราะห์ข้อมูกราฟ</h3>
+                    <p>(Data Visualization)</p>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/Screenshot 2025-07-08 104951.png" 
+                             alt="Dashboard Project" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>📱 ออกแบบPDPD</h3>
+                    <p>PDPD</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                        <img src="imggg/Untitled-ggg.jpg" 
+                             alt="App Screenshot 1" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/300x500?text=Screenshot+2" 
+                             alt="App Screenshot 2" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/300x500?text=Screenshot+3" 
+                             alt="App Screenshot 3" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🎮 ออกแบบ3D</h3>
+                    <p>3D</p>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/policia_Photo - 1.jpg" 
+                             alt="Game Preview" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/200x150?text=Scene+1" 
+                             alt="Game Scene 1" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/200x150?text=Scene+2" 
+                             alt="Game Scene 2" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/200x150?text=Scene+3" 
+                             alt="Game Scene 3" 
+                             style="width: 100%; border-radius: 5px;">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🏪 ออกแบบห้อง</h3>
+                    <p>ห้อง</p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <img src="imggg/Screenshot (33).png" 
+                             alt="E-commerce Homepage" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Product+Page" 
+                             alt="Product Page" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Cart" 
+                             alt="Shopping Cart" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Admin+Dashboard" 
+                             alt="Admin Dashboard" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🤖 3Dเกาะ</h3>
+                    <p>เกาะ</p>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/Screenshot (53).png" 
+                             alt="Chatbot Interface" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/300x200?text=Chat+Example+1" 
+                             alt="Chat Example 1" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/300x200?text=Chat+Example+2" 
+                             alt="Chat Example 2" 
+                             style="width: 100%; border-radius: 5px;">
+                    </div>
+                    <div class="project-links">
+                        <h4>:</h4>
+                        <p>✓ <br>
+                        ✓ <br>
+                        ✓ </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 การศึกษา (Education)</h2>
+            <p><strong>คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ</strong></p>
+            <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
+            <p><em>------------------</em></p>
+        </div>
+
+        <div class="section">
+            <h2>🏆 กิจกรรมและผลงานอื่น ๆ (Activities / Achievements)</h2>
+            <p>เพื่อแสดงความสามารถรอบด้าน</p>
+            <div class="achievements">
+                <div class="achievement-item">
+                    <h3>🎯 ต้อนรับนายก</h3>
+                    <div style="margin: 1rem 0;">
+                        <img src="imggg/a0430b39-0b9c-478c-860c-667ae247d320.jpg" 
+                             alt="AI Training Certificate" 
+                             style="width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅 วันที่:  | 🏢 สถานที่: </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>💻 กีฬาสีวังแดง</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                        <img src="imggg/06aa302b-da97-4827-8c07-5f2e0f968b93.jpg" 
+                             alt="Team Photo" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="imggg/0847386c-ffc3-436b-bd3b-f970f118be99.jpg" 
+                             alt="Presentation" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Project+Demo" 
+                             alt="Project Demo" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅  | 🏆 </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🌟 ได้รับรางวัลชนะเลิศโครงงานด้าน IoT</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/400x300?text=Award+Ceremony" 
+                             alt="Award Ceremony" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Certificate" 
+                             alt="Certificate" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/300x200?text=IoT+Device+1" 
+                             alt="IoT Device 1" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/300x200?text=IoT+Device+2" 
+                             alt="IoT Device 2" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/300x200?text=IoT+Device+3" 
+                             alt="IoT Device 3" 
+                             style="width: 100%; border-radius: 5px;">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅 มีนาคม 2025 | 💡 โครงงาน: ระบบควบคุมบ้านอัจฉริยะ</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>📚 วิทยากรสอนเด็กเขียนโค้ด (Code for Kids)</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/400x300?text=Teaching+Session+1" 
+                             alt="Teaching Session 1" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Teaching+Session+2" 
+                             alt="Teaching Session 2" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅 เมษายน 2025 | 👥 สอนเด็กประมาณ 30 คน</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🎤 Speaker ในงาน Tech Talk: "Future of AI"</h3>
+                    <div style="margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/700x400?text=Speaking+at+Event" 
+                             alt="Speaking at Event" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/300x200?text=Slide+1" 
+                             alt="Presentation Slide 1" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/300x200?text=Slide+2" 
+                             alt="Presentation Slide 2" 
+                             style="width: 100%; border-radius: 5px;">
+                        <img src="https://via.placeholder.com/300x200?text=Q&A" 
+                             alt="Q&A Session" 
+                             style="width: 100%; border-radius: 5px;">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅 พฤษภาคม 2025 | 🎯 หัวข้อ: การประยุกต์ใช้ AI ในชีวิตประจำวัน</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🤝 อาสาสมัคร Digital Literacy for Elderly</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                        <img src="https://via.placeholder.com/400x300?text=Workshop+1" 
+                             alt="Workshop 1" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Workshop+2" 
+                             alt="Workshop 2" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <img src="https://via.placeholder.com/400x300?text=Group+Photo" 
+                             alt="Group Photo" 
+                             style="width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    <p style="margin-top: 0.5rem;">📅 มิถุนายน 2025 | 💙 สอนผู้สูงอายุใช้สมาร์ทโฟนและแอปพลิเคชันพื้นฐาน</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📞 ติดต่อ (Contact)</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <p>📧 <strong>Email</strong></p>
+                    <a href="mailto:your.email@gmail.com">your.email@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <p>💼 <strong>GitHub</strong></p>
+                    <a href="https://github.com/Aditip0-0-7/Aditip0-0-7.github.io" target="_blank">github.com/yourusername</a>
+                </div>
+                <div class="contact-item">
+                    <p>🔗 <strong>LinkedIn</strong></p>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                </div>
+                <div class="contact-item">
+                    <p>📱 <strong>Facebook</strong></p>
+                    <a href="https://facebook.com/yourprofile" target="_blank">facebook.com/yourprofile</a>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; text-align: center; color: #666;"><em>ที่อยู่จังหวัด (ไม่จำเป็นต้องละเอียด)</em></p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 องค์ประกอบเสริม</h2>
+            <p><strong>เป้าหมายในอนาคต</strong> หรือ <strong>Career Interest</strong></p>
+            <p style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                "ฉันมีความสนใจในการพัฒนาระบบ AI และ Machine Learning เพื่อนำไปประยุกต์ใช้แก้ปัญหาในชีวิตจริง 
+                และต้องการพัฒนาทักษะด้าน Data Science ให้มีความเชี่ยวชาญมากยิ่งขึ้น"
+            </p>
+        </div>
+
+        <footer>
+            <p>© 2025 | Made with 💜 | ชื่อของคุณ</p>
+            <p>อัพเดทล่าสุด: พฤศจิกายน 2567</p>
+        </footer>
     </div>
 </body>
 </html>
