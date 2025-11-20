@@ -9,6 +9,8 @@
     echo "hello world";
     echo"br";
     echo "<h2> name: Aditip Doe </h2>";
+    echo 'php version: ' . phpversion();
+    phpinfo()
     ?>
 </body>
 </html>
