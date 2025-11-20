@@ -8,7 +8,7 @@
     <?php 
     echo "hello world";
     echo"br";
-    echo "<h2> name: John Doe </h2>";
+    echo "<h2> name: Aditip Doe </h2>";
     ?>
 </body>
 </html>
